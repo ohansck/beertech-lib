@@ -14,7 +14,9 @@ export class BooksService {
   ) { }
 
   async create(createBookDto: CreateBookDto) {
-    return await this.bookRepository.save(createBookDto);
+    const res = await this.bookRepository.save(createBookDto);
+    console.log(res);
+    return res;
   }
 
   async findAll(): Promise<Book[] | null> {
@@ -38,6 +40,10 @@ export class BooksService {
   }
 
   async delete(id: number) {
-    return await this.bookRepository.delete(id);
+    const book = await this.bookRepository.findOneBy({ id });
+    if (!book) {
+      throw new NotFoundException('Book not found');
+    }
+    return await this.bookRepository.remove(book);
   }
 }
