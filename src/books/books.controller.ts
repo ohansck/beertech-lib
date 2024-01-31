@@ -5,7 +5,7 @@ import { UpdateBookDto } from './dto/update-book.dto';
 
 @Controller('books')
 export class BooksController {
-  constructor(private readonly booksService: BooksService) {}
+  constructor(private readonly booksService: BooksService) { }
 
   @Post()
   create(@Body() createBookDto: CreateBookDto) {
@@ -28,7 +28,7 @@ export class BooksController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.booksService.remove(+id);
+  delete(@Param('id') id: string) {
+    return this.booksService.delete(+id);
   }
 }
