@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { Book } from './entities/book.entity';
 
 
@@ -14,12 +14,10 @@ export class BooksService {
   ) { }
 
   async create(createBookDto: CreateBookDto) {
-    const res = await this.bookRepository.save(createBookDto);
-    console.log(res);
-    return res;
+    return await this.bookRepository.save(createBookDto);
   }
 
-  async findAll(): Promise<Book[] | null> {
+  async findAll(): Promise<Book[] | null[]> {
     return await this.bookRepository.find();
   }
 
@@ -31,7 +29,7 @@ export class BooksService {
     return book;
   }
 
-  async update(id: number, updateBookDto: UpdateBookDto) {
+  async update(id: number, updateBookDto: UpdateBookDto): Promise<UpdateResult> {
     const book = await this.bookRepository.findOneBy({ id });
     if (!book) {
       throw new NotFoundException('Book not found');
@@ -39,7 +37,7 @@ export class BooksService {
     return await this.bookRepository.update(id, updateBookDto);
   }
 
-  async delete(id: number) {
+  async delete(id: number): Promise<Book> {
     const book = await this.bookRepository.findOneBy({ id });
     if (!book) {
       throw new NotFoundException('Book not found');
