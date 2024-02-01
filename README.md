@@ -1,73 +1,107 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Book Management API with NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![Build Status](https://github.com/ohansck/beertech-lib/actions/workflows/dev-build.yml/badge.svg)](https://github.com/ohansck/beertech-lib/actions/workflows/dev-build.yml/badge.svg)
+[![Documentation](https://img.shields.io/badge/API%20Documentation-Swagger-brightgreen)](http://ec2-54-242-248-76.compute-1.amazonaws.com/api)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A simple RESTful API built with NestJS to manage a collection of books. This project includes functionalities to retrieve all books, retrieve a specific book, add a new book, update an existing book, and delete a book.
 
-## Description
+You can use the [live deployment here](http://ec2-54-242-248-76.compute-1.amazonaws.com/books)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Table of Contents
 
-## Installation
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Run Locally](#run-locally)
+  - [Testing](#testing)
+- [API Documentation](#api-documentation)
+- [Database Configuration](#database-configuration)
+- [Docker Deployment](#docker-deployment)
+- [GitHub Actions CI](#github-actions-ci)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm
+- NestJS CLI
+- Your choice of SQL database (e.g., MSSQL)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ohansck/beertech-lib.git
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   cd your-repo-name
+   npm install
+   ```
+
+## Usage
+
+### Run Locally
+
+1. Set up your database configuration by providing environment variables in the `.env` file:
+
+   ```env
+   DB_HOST=your_database_host
+   DB_USERNAME=your_database_username
+   DB_PASSWORD=your_database_password
+   DB_DATABASE=your_database_name
+   DB_PORT=your_database_port
+   ```
+
+2. Start the application:
+
+   ```bash
+   npm run start:dev
+   ```
+
+3. Access the API at `http://localhost:3000/books`.
+
+### Testing
+
+Run unit tests:
 
 ```bash
-$ npm install
+npm run test
 ```
 
-## Running the app
+## API Documentation
+
+Explore the API using Swagger documentation:
+
+- [Swagger Documentation](http://ec2-54-242-248-76.compute-1.amazonaws.com/api)
+
+## Database Configuration
+
+This project uses a SQL database to store book information. Ensure that you configure the database by providing the required environment variables in the `.env` file.
+
+## Docker Deployment
+
+Easily deploy the application using Docker and Docker Compose:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+docker-compose up -d
 ```
 
-## Test
+Access the API at `http://localhost:3000/books`.
 
-```bash
-# unit tests
-$ npm run test
+## GitHub Actions CI
 
-# e2e tests
-$ npm run test:e2e
+The project includes a GitHub Actions workflow on the `dev` and `main` branch, automatically building and running tests on each code submission.
 
-# test coverage
-$ npm run test:cov
-```
+## Contributing
 
-## Support
+Feel free to open issues, submit pull requests, or provide feedback.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+---
