@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('BeerTech Africa Books Collection')
-    .setDescription('Books Collection API')
+    .setDescription('Backend Engineer: Kingsley Ohaneme')
     .setVersion('1.0')
     .addTag('beertech')
     .build();
