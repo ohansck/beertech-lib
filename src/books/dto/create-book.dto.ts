@@ -9,6 +9,5 @@ export class CreateBookDto {
     author: string;
 
     @IsString()
-    @IsOptional()
     description: string;
 }
